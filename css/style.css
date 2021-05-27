@@ -5,14 +5,13 @@
 @import url("components/card.css");
 @import url("components/navbar.css");
 
-/* Importing layouts */
 /*@import url("pages/map.css");*/
 
 body {
   margin: 0;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Varela Round', serif;
   font-size: 18px;
-  background: #F4F4F4;
+  background: #FFFFFA;
 }
 p {
   font-weight: lighter;
@@ -20,6 +19,8 @@ p {
 h1, h2, h3 {
   font-family: 'Varela Round', sans-serif;
   font-weight: bold;
+  text-decoration:underline;
+  color:#001d06;
 }
 h1 {
   font-size: 30px;
