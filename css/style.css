@@ -9,7 +9,7 @@
 
 body {
   margin: 0;
-  font-family: 'Varela Round', serif;
+  font-family: Helvetica, serif;
   font-size: 18px;
   background: #FFFFFA;
 }
@@ -17,7 +17,7 @@ p {
   font-weight: lighter;
 }
 h1, h2, h3 {
-  font-family: 'Varela Round', sans-serif;
+  font-family: Helvetica, sans-serif;
   font-weight: bold;
   text-decoration:underline;
   color:#001d06;
