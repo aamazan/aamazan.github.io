@@ -12,6 +12,7 @@
   height: 85px;
   border-radius: 50%;
 }
+
 @media(max-width:800px){
     .navbar-minimalist img{
         width: 0px;
