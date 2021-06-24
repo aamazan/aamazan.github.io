@@ -1,37 +1,97 @@
-<h4 id="-pancake-sort-challenge-intermediate-6-15-21-https-www-reddit-com-r-dailyprogrammer-comments-np3sio-20210531_challenge_392_intermediate_pancake_sort-"><a href="https://www.reddit.com/r/dailyprogrammer/comments/np3sio/20210531_challenge_392_intermediate_pancake_sort/">Pancake Sort Challenge [intermediate] — 6/15/21</a></h4>
-<p>Prompt:</p>
-<blockquote>
-<p>&quot;Implement the flipfront function. Given an array of integers and a number n between 2 and the length of the array (inclusive), return the array with the order of the first n elements reversed. ...Given an array of integers, sort the array (smallest to largest) using the flipfront function on the entire array.
-...Make sure you correctly handle elements that appear more than once in the array!
-You may not modify the array by any other means, but you may examine it however you want.&quot;</p>
-</blockquote>
-<p>The flipfront portion of the prompt was fairly simple and took little time, but the second part was surprisingly tricky, not because the theory behind the algorithm wasn&#39;t understood, but because of a lack of familiarity with some of Python&#39;s specific quirks (in this case, slicing arrays and what happens when a subarray is passed as an argument).</p>
-<p>Pancake Sort is a fun algorithm. Although you may already know how it works, I feel obliged to explain how it works (at the very least, to show that I understand it myself).
-The function starts by taking a set and finding the largest value. This value is then flipped to the 0 index and out to the end of the array (which then becomes a &quot;sorted&quot; subset). The process then continues on the subset of items that does not include the largest item from the previous subset until the end of the array. This conveniently also allows for duplicates in the sorting process without messing things up for other indices.</p>
-<p>Below is the code for all functions used in the exercise:</p>
-<pre><code><span class="hljs-comment"># returns index of largest element of an array</span>
-def largest(<span class="hljs-built_in">array</span>):
-    index = <span class="hljs-number">0</span>
-    lgst = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,len(<span class="hljs-built_in">array</span>)):
-        <span class="hljs-keyword">if</span> <span class="hljs-built_in">array</span>[i] &gt; lgst:
-            index = i
-            lgst = <span class="hljs-built_in">array</span>[i]
-    <span class="hljs-keyword">return</span> index
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Armaan Amazan's webpage</title>
+    <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+    <!-- -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<span class="hljs-comment"># returns the set with the subset indices up to the nth reversed</span>
-def flip_front(<span class="hljs-built_in">array</span>, n):
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,math.floor(n/<span class="hljs-number">2</span>)):
-        temp = <span class="hljs-built_in">array</span>[i]
-        <span class="hljs-built_in">array</span>[i] = <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i]
-        <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i] = temp
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
 
-<span class="hljs-comment"># returns the set sorted from least to greatest (duplicate-inclusive)</span>
-def pancake_sort(<span class="hljs-built_in">array</span>):
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, len(<span class="hljs-built_in">array</span>)):
-        l = largest(<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>:len(<span class="hljs-built_in">array</span>)-i]) <span class="hljs-comment">#largest in current subset</span>
-        flip_front(<span class="hljs-built_in">array</span>, l+<span class="hljs-number">1</span>)
-        flip_front(<span class="hljs-built_in">array</span>, len(<span class="hljs-built_in">array</span>)-i)
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
-</code></pre>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation" >
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index.html">Armaan Amazan</a>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/pages/resume.html">Résumé</a></li>
+          <li class="nav-item"><a class="nav-link" href="/pages/projects.html">Projects</a></li>
+          <li class="nav-item dropdown active">
+            <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="">Posts
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/pages/music.html">Music</a></li>
+              <li><a class="dropdown-item active" href="/pages/programming.html">Programming</a></li>
+              <li><a class="dropdown-item" href="/pages/GDDs.html">Game Design</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/pages/about">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <h4 id="-pancake-sort-challenge-intermediate-6-15-21-https-www-reddit-com-r-dailyprogrammer-comments-np3sio-20210531_challenge_392_intermediate_pancake_sort-"><a href="https://www.reddit.com/r/dailyprogrammer/comments/np3sio/20210531_challenge_392_intermediate_pancake_sort/">Pancake Sort Challenge [intermediate] — 6/15/21</a></h4>
+      <p>Prompt:</p>
+      <blockquote>
+      <p>&quot;Implement the flipfront function. Given an array of integers and a number n between 2 and the length of the array (inclusive), return the array with the order of the first n elements reversed. ...Given an array of integers, sort the array (smallest to largest) using the flipfront function on the entire array.
+      ...Make sure you correctly handle elements that appear more than once in the array!
+      You may not modify the array by any other means, but you may examine it however you want.&quot;</p>
+      </blockquote>
+    </div>
+    <div class="container">
+      <div class="col-sm-12 bg-light text-justify">
+        <p>The flipfront portion of the prompt was fairly simple and took little time, but the second part was surprisingly tricky, not because the theory behind the algorithm wasn&#39;t understood, but because of a lack of familiarity with some of Python&#39;s specific quirks (in this case, slicing arrays and what happens when a subarray is passed as an argument).</p>
+        <p>Pancake Sort is a fun algorithm. Although you may already understand it, I feel obliged to explain how it works (at the very least, to show that I understand it myself).
+        The function starts by taking a set and finding the largest value. This value is then flipped to the 0 index and out to the end of the array (which then becomes a &quot;sorted&quot; subset). The process then continues on the subset of items that does not include the largest item from the previous subset until the end of the array. This conveniently also allows for duplicates in the sorting process without messing up ordening for other indices.</p>
+        <p>Below is the code for all functions used in the exercise:</p>
+
+        <div class="border border-dark">
+          <pre><code><span class="hljs-comment"># returns index of largest element of an array</span>
+          def largest(<span class="hljs-built_in">array</span>):
+              index = <span class="hljs-number">0</span>
+              lgst = <span class="hljs-number">0</span>
+              <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,len(<span class="hljs-built_in">array</span>)):
+                  <span class="hljs-keyword">if</span> <span class="hljs-built_in">array</span>[i] &gt; lgst:
+                      index = i
+                      lgst = <span class="hljs-built_in">array</span>[i]
+              <span class="hljs-keyword">return</span> index
+
+          <span class="hljs-comment"># returns the set with the subset indices up to the nth reversed</span>
+          def flip_front(<span class="hljs-built_in">array</span>, n):
+              <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,math.floor(n/<span class="hljs-number">2</span>)):
+                  temp = <span class="hljs-built_in">array</span>[i]
+                  <span class="hljs-built_in">array</span>[i] = <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i]
+                  <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i] = temp
+              <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
+
+          <span class="hljs-comment"># returns the set sorted from least to greatest (duplicate-inclusive)</span>
+          def pancake_sort(<span class="hljs-built_in">array</span>):
+              <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, len(<span class="hljs-built_in">array</span>)):
+                  l = largest(<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>:len(<span class="hljs-built_in">array</span>)-i]) <span class="hljs-comment">#largest in current subset</span>
+                  flip_front(<span class="hljs-built_in">array</span>, l+<span class="hljs-number">1</span>)
+                  flip_front(<span class="hljs-built_in">array</span>, len(<span class="hljs-built_in">array</span>)-i)
+              <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
+          </code></pre>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+
+    </body>
+  </html>
