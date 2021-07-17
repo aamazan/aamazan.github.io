@@ -14,26 +14,58 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/index.html">Armaan Amazan</a>
+          <a class="navbar-brand" href="/index.html">⠀Armaan Amazan</a>
         </div>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/pages/resume.html">Résumé</a></li>
-          <li class="nav-item"><a class="nav-link" href="/pages/projects.html">Projects</a></li>
-          <li class="nav-item dropdown active">
-            <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="">Posts
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/pages/music.html">Music</a></li>
-              <li><a class="dropdown-item active" href="/pages/programming.html">Programming</a></li>
-              <li><a class="dropdown-item" href="/pages/GDDs.html">Game Design</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="/pages/about">Contact</a></li>
-        </ul>
+        <div class="d-none d-xl-block">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 hidden-lg hidden-md hidden-sm hidden-xs">
+            <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/resume.html">Résumé</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/projects.html">Projects</a></li>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle nav-link  active" data-toggle="dropdown" href="">Posts
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/pages/music.html">Music</a></li>
+                <div class="dropdown-divider"></div>
+                <li><a class="dropdown-item" href="/pages/programming.html">Programming</a></li>
+                <div class="dropdown-divider"></div>
+                <li><a class="dropdown-item" href="/pages/GDDs.html">Game Design</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="pages/about.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="d-lg-none">
+          <a class="nav-link fas fa-bars-light" data-toggle="dropdown" href="">
+            <div class="container1" onclick="myFunction(this)">
+             <div class="bar1"></div>
+             <div class="bar2"></div>
+             <div class="bar3"></div>
+           </div>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/index.html">Home</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/resume.html">Résumé</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/projects.html">Projects</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/about.html">Contact</a></li>
+            <div class="dropdown-divider"></div>
+
+            <li class="dropdown-header">Blog Posts:</li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/music.html">Music</a></li>
+            <li><a class="dropdown-item" href="/pages/programming.html">Programming</a></li>
+
+            <li><a class="dropdown-item" href="/pages/GDDs.html">Game Design</a></li>
+          </ul>
+
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -54,40 +86,93 @@
         <p>Below is the code for all functions used in the exercise:</p>
 
         <div class="border border-dark">
-<pre><code><span class="hljs-comment"># returns index of largest element of an array</span>
-def largest(<span class="hljs-built_in">array</span>):
-    index = <span class="hljs-number">0</span>
-    lgst = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,len(<span class="hljs-built_in">array</span>)):
-        <span class="hljs-keyword">if</span> <span class="hljs-built_in">array</span>[i] &gt; lgst:
-            index = i
-            lgst = <span class="hljs-built_in">array</span>[i]
-    <span class="hljs-keyword">return</span> index
+          <pre><code><span class="hljs-comment"># returns index of largest element of an array</span>
+          def largest(<span class="hljs-built_in">array</span>):
+              index = <span class="hljs-number">0</span>
+              lgst = <span class="hljs-number">0</span>
+              <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,len(<span class="hljs-built_in">array</span>)):
+                  <span class="hljs-keyword">if</span> <span class="hljs-built_in">array</span>[i] &gt; lgst:
+                      index = i
+                      lgst = <span class="hljs-built_in">array</span>[i]
+              <span class="hljs-keyword">return</span> index
 
-<span class="hljs-comment"># returns the set with the subset indices up to the nth reversed</span>
-def flip_front(<span class="hljs-built_in">array</span>, n):
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,math.floor(n/<span class="hljs-number">2</span>)):
-        temp = <span class="hljs-built_in">array</span>[i]
-        <span class="hljs-built_in">array</span>[i] = <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i]
-        <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i] = temp
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
+          <span class="hljs-comment"># returns the set with the subset indices up to the nth reversed</span>
+          def flip_front(<span class="hljs-built_in">array</span>, n):
+              <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,math.floor(n/<span class="hljs-number">2</span>)):
+                  temp = <span class="hljs-built_in">array</span>[i]
+                  <span class="hljs-built_in">array</span>[i] = <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i]
+                  <span class="hljs-built_in">array</span>[(n-<span class="hljs-number">1</span>)-i] = temp
+              <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
 
-<span class="hljs-comment"># returns the set sorted from least to greatest (duplicate-inclusive)</span>
-def pancake_sort(<span class="hljs-built_in">array</span>):
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, len(<span class="hljs-built_in">array</span>)):
-        l = largest(<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>:len(<span class="hljs-built_in">array</span>)-i]) <span class="hljs-comment">#largest in current subset</span>
-        flip_front(<span class="hljs-built_in">array</span>, l+<span class="hljs-number">1</span>)
-        flip_front(<span class="hljs-built_in">array</span>, len(<span class="hljs-built_in">array</span>)-i)
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
-</code></pre>
-</div>
-
-
-</div>
-</div>
+          <span class="hljs-comment"># returns the set sorted from least to greatest (duplicate-inclusive)</span>
+          def pancake_sort(<span class="hljs-built_in">array</span>):
+              <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, len(<span class="hljs-built_in">array</span>)):
+                  l = largest(<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>:len(<span class="hljs-built_in">array</span>)-i]) <span class="hljs-comment">#largest in current subset</span>
+                  flip_front(<span class="hljs-built_in">array</span>, l+<span class="hljs-number">1</span>)
+                  flip_front(<span class="hljs-built_in">array</span>, len(<span class="hljs-built_in">array</span>)-i)
+              <span class="hljs-keyword">return</span> <span class="hljs-built_in">array</span>
+          </code></pre>
+          </div>
 
 
+          </div>
+          </div>
 
+
+    <style>
+      .dropdown-menu {
+        left: 50%;
+        right: auto;
+        text-align: center;
+        transform: translate(-50%, 0);
+        }
+
+      footer {
+        position: fixed;
+        padding: 10px 10px 0px 10px;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        opacity: .75;
+        }
+
+      .container1 {
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #FFF;
+        margin: 6px 0;
+        transition: 0.1s;
+        opacity: .95;
+      }
+
+      /* Rotate first bar */
+      .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+        transform: rotate(-45deg) translate(-9px, 6px) ;
+      }
+
+      /* Fade out the second bar */
+      .change .bar2 {
+        opacity: 0;
+      }
+
+      /* Rotate last bar */
+      .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+        transform: rotate(45deg) translate(-8px, -8px) ;
+      }
+    </style>
+    <script>
+      function myFunction(x) {
+        x.classList.toggle("change");
+      }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
