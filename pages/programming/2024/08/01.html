@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Armaan Amazan's webpage</title>
+    <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+    <!-- -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index.html">⠀Armaan Amazan</a>
+        </div>
+        <div class="d-none d-xl-block">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 hidden-lg hidden-md hidden-sm hidden-xs">
+            <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/resume.html">Résumé</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/projects.html">Projects</a></li>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle nav-link  active" data-toggle="dropdown" href="">Posts
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/pages/music.html">Music</a></li>
+                <div class="dropdown-divider"></div>
+                <li><a class="dropdown-item" href="/pages/programming.html">Programming</a></li>
+                <div class="dropdown-divider"></div>
+                <li><a class="dropdown-item" href="/pages/GDDs.html">Game Design</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="pages/about.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="d-lg-none">
+          <a class="nav-link fas fa-bars-light" data-toggle="dropdown" href="">
+            <div class="container1" onclick="myFunction(this)">
+             <div class="bar1"></div>
+             <div class="bar2"></div>
+             <div class="bar3"></div>
+           </div>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/index.html">Home</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/resume.html">Résumé</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/projects.html">Projects</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/about.html">Contact</a></li>
+            <div class="dropdown-divider"></div>
+
+            <li class="dropdown-header">Blog Posts:</li>
+            <div class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="/pages/music.html">Music</a></li>
+            <li><a class="dropdown-item" href="/pages/programming.html">Programming</a></li>
+
+            <li><a class="dropdown-item" href="/pages/GDDs.html">Game Design</a></li>
+          </ul>
+
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <h4 id="-median-of-two-sorted-arrays-"><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">Median of Two Sorted Arrays[&quot;hard &quot; difficulty] — 08/01/24</a></h4>
+      <p>Prompt:</p>
+      <blockquote>
+      <p>&quot;Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+        <br>
+        The overall run time complexity should be O(log (m+n)).&quot;</p>
+      </blockquote>
+    </div>
+    <div class="container">
+      <p>I&#39;m ashamed to admit that this wasn&#39;t my best attempt at solving a problem, with my runtime clocking in about about 111ms (the average being around 99-100ms). I owe this to approaching the problem too concretely, since the point of the question was to find a specific solution and I focused too much on the idea of creating and manipulating an array. </p>
+      <p>First, let&#39;s do an analysis of my answer (in TypeScript), then let&#39;s jump into the proposed solution and why it makes so much more sense. </p>
+      <pre><code class="language-ts">function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
+      let nums3: number[] = []
+      let ans: number
+      while((nums1.length &gt; 0) &amp;&amp; (nums2.length &gt; 0)){
+          if(nums1[0] &lt; nums2[0]){
+              nums3.push(nums1.shift())
+          } else {
+              nums3.push(nums2.shift())
+          }
+      }
+      while(nums1.length &gt; 0){
+              nums3.push(nums1.shift())
+          } 
+      while (nums2.length &gt; 0) {
+          nums3.push(nums2.shift())
+      }
+      if (nums3.length%2 == 0){
+          ans = (((nums3[(nums3.length/2) - 1]) + (nums3[(nums3.length/2)]))/2)
+      } else {
+          ans = nums3[(nums3.length/2) - .5]
+      }
+      return ans
+      };
+      </code></pre>
+      
+    def lengthOfLongestSubstring(self, <span class="hljs-variable">s:</span> str) -&gt; in<span class="hljs-variable">t:</span>
+        longest = <span class="hljs-number">0</span>
+        counter = <span class="hljs-number">0</span>
+        used = []
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(s) == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        <span class="hljs-keyword">if</span> s == <span class="hljs-string">" "</span> <span class="hljs-built_in">or</span> <span class="hljs-built_in">len</span>(s) == <span class="hljs-number">1</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+
+        <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(s)):
+            <span class="hljs-keyword">if</span> s[i] in used:
+                <span class="hljs-keyword">print</span>(used)
+                <span class="hljs-keyword">if</span> counter &gt; longes<span class="hljs-variable">t:</span>
+                    longest = counter
+                counter = <span class="hljs-number">1</span>
+                used = []
+                used.<span class="hljs-keyword">append</span>(s[i])
+            <span class="hljs-keyword">else</span>:
+                used.<span class="hljs-keyword">append</span>(s[i])
+                counter += <span class="hljs-number">1</span>
+                <span class="hljs-keyword">if</span> counter &gt; longes<span class="hljs-variable">t:</span>
+                    longest = counter
+        <span class="hljs-keyword">return</span> longest
+</code></pre><p>The solution that ended up working started with a more math-oriented approach. The longest possible substring in a string is the length of the string, and it follows that the longest non-character-repeating substring possible is limited by the number of characters in the string. As such, this solution takes the string and, after determining the longest possible substring available, checks substrings of the string iteratively until a match is found. While this isn&#39;t the prettiest solution, I&#39;m happy that I both finally managed to finish this problem and made the &quot;chunk-checking&quot; loops scalable, something I hadn&#39;t considered doing for these exercises in the past. Maybe in the future I&#39;ll come back and solve this problem more efficiently, but for now, it&#39;s probably best to move on.</p>
+<p>As always, the solution code:</p>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unique</span><span class="hljs-params">(s)</span></span>:
+        chars = []
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>,len(s)):
+            <span class="hljs-keyword">if</span> s[i] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> <span class="hljs-symbol">chars:</span>
+                chars.append(s[i])
+        <span class="hljs-keyword">return</span> len(chars)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, <span class="hljs-symbol">s:</span> str)</span></span> -&gt; <span class="hljs-symbol">int:</span>
+        maxstr = Solution.unique(s)
+        <span class="hljs-keyword">if</span> len(s) == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        <span class="hljs-keyword">if</span> s == <span class="hljs-string">" "</span> <span class="hljs-keyword">or</span> len(s) == <span class="hljs-number">1</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(maxstr, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>): <span class="hljs-comment">#outer control loop for chunking</span>
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, (len(s)-i+<span class="hljs-number">1</span>)):
+                test = s[<span class="hljs-symbol">j:</span>(j+i)]
+                temp = Solution.unique(test)
+                <span class="hljs-keyword">if</span> temp == <span class="hljs-symbol">i:</span>
+                    <span class="hljs-keyword">return</span> i
+</code></pre>
+
+
+</div>
+
+
+    <style>
+      .dropdown-menu {
+        left: 50%;
+        right: auto;
+        text-align: center;
+        transform: translate(-50%, 0);
+        }
+
+      footer {
+        position: fixed;
+        padding: 10px 10px 0px 10px;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        opacity: .75;
+        }
+
+      .container1 {
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #FFF;
+        margin: 6px 0;
+        transition: 0.1s;
+        opacity: .95;
+      }
+
+      /* Rotate first bar */
+      .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+        transform: rotate(-45deg) translate(-9px, 6px) ;
+      }
+
+      /* Fade out the second bar */
+      .change .bar2 {
+        opacity: 0;
+      }
+
+      /* Rotate last bar */
+      .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+        transform: rotate(45deg) translate(-8px, -8px) ;
+      }
+    </style>
+    <script>
+      function myFunction(x) {
+        x.classList.toggle("change");
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+
+    </body>
+  </html>
