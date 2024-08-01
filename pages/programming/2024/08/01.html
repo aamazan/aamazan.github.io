@@ -105,53 +105,6 @@
       return ans
       };
       </code></pre>
-      
-    def lengthOfLongestSubstring(self, <span class="hljs-variable">s:</span> str) -&gt; in<span class="hljs-variable">t:</span>
-        longest = <span class="hljs-number">0</span>
-        counter = <span class="hljs-number">0</span>
-        used = []
-        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(s) == <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
-        <span class="hljs-keyword">if</span> s == <span class="hljs-string">" "</span> <span class="hljs-built_in">or</span> <span class="hljs-built_in">len</span>(s) == <span class="hljs-number">1</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
-
-        <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(s)):
-            <span class="hljs-keyword">if</span> s[i] in used:
-                <span class="hljs-keyword">print</span>(used)
-                <span class="hljs-keyword">if</span> counter &gt; longes<span class="hljs-variable">t:</span>
-                    longest = counter
-                counter = <span class="hljs-number">1</span>
-                used = []
-                used.<span class="hljs-keyword">append</span>(s[i])
-            <span class="hljs-keyword">else</span>:
-                used.<span class="hljs-keyword">append</span>(s[i])
-                counter += <span class="hljs-number">1</span>
-                <span class="hljs-keyword">if</span> counter &gt; longes<span class="hljs-variable">t:</span>
-                    longest = counter
-        <span class="hljs-keyword">return</span> longest
-</code></pre><p>The solution that ended up working started with a more math-oriented approach. The longest possible substring in a string is the length of the string, and it follows that the longest non-character-repeating substring possible is limited by the number of characters in the string. As such, this solution takes the string and, after determining the longest possible substring available, checks substrings of the string iteratively until a match is found. While this isn&#39;t the prettiest solution, I&#39;m happy that I both finally managed to finish this problem and made the &quot;chunk-checking&quot; loops scalable, something I hadn&#39;t considered doing for these exercises in the past. Maybe in the future I&#39;ll come back and solve this problem more efficiently, but for now, it&#39;s probably best to move on.</p>
-<p>As always, the solution code:</p>
-<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unique</span><span class="hljs-params">(s)</span></span>:
-        chars = []
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>,len(s)):
-            <span class="hljs-keyword">if</span> s[i] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> <span class="hljs-symbol">chars:</span>
-                chars.append(s[i])
-        <span class="hljs-keyword">return</span> len(chars)
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, <span class="hljs-symbol">s:</span> str)</span></span> -&gt; <span class="hljs-symbol">int:</span>
-        maxstr = Solution.unique(s)
-        <span class="hljs-keyword">if</span> len(s) == <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
-        <span class="hljs-keyword">if</span> s == <span class="hljs-string">" "</span> <span class="hljs-keyword">or</span> len(s) == <span class="hljs-number">1</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(maxstr, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>): <span class="hljs-comment">#outer control loop for chunking</span>
-            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, (len(s)-i+<span class="hljs-number">1</span>)):
-                test = s[<span class="hljs-symbol">j:</span>(j+i)]
-                temp = Solution.unique(test)
-                <span class="hljs-keyword">if</span> temp == <span class="hljs-symbol">i:</span>
-                    <span class="hljs-keyword">return</span> i
-</code></pre>
 
 
 </div>
