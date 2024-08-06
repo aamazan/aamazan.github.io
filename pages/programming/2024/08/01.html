@@ -70,7 +70,7 @@
     </nav>
 
     <div class="jumbotron">
-      <h4 id="-median-of-two-sorted-arrays-"><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">Median of Two Sorted Arrays[&quot;hard &quot; difficulty] — 08/01/24</a></h4>
+      <h4 id="-median-of-two-sorted-arrays-"><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">Median of Two Sorted Arrays[&quot;hard&quot; difficulty] — 08/01/24</a></h4>
       <p>Prompt:</p>
       <blockquote>
       <p>&quot;Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
@@ -79,32 +79,41 @@
       </blockquote>
     </div>
     <div class="container">
-      <p>I&#39;m ashamed to admit that this wasn&#39;t my best attempt at solving a problem, with my runtime clocking in about about 111ms (the average being around 99-100ms). I owe this to approaching the problem too concretely, since the point of the question was to find a specific solution and I focused too much on the idea of creating and manipulating an array. </p>
-      <p>First, let&#39;s do an analysis of my answer (in TypeScript), then let&#39;s jump into the proposed solution and why it makes so much more sense. </p>
-      <pre><code class="language-ts">function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
-      let nums3: number[] = []
-      let ans: number
-      while((nums1.length &gt; 0) &amp;&amp; (nums2.length &gt; 0)){
-          if(nums1[0] &lt; nums2[0]){
-              nums3.push(nums1.shift())
-          } else {
-              nums3.push(nums2.shift())
-          }
-      }
-      while(nums1.length &gt; 0){
-              nums3.push(nums1.shift())
-          } 
-      while (nums2.length &gt; 0) {
-          nums3.push(nums2.shift())
-      }
-      if (nums3.length%2 == 0){
-          ans = (((nums3[(nums3.length/2) - 1]) + (nums3[(nums3.length/2)]))/2)
-      } else {
-          ans = nums3[(nums3.length/2) - .5]
-      }
-      return ans
-      };
-      </code></pre>
+      <p>I&#39;m ashamed to admit that this wasn&#39;t my best attempt at solving a problem, with my runtime clocking in about about 111ms (the average being around 99-100ms). I owe this to approaching the problem too concretely, since the point of the question was to find a specific solution and I focused too much on the idea of creating and manipulating an array when I could&#39;ve just used an existing algorithm (like one of the proposed solutions, reliable old merge sort).</p>
+<p>Let&#39;s do an analysis of my answer (in TypeScript). </p>
+<pre><code class="lang-ts">function findMedianSortedArrays(nums1: <span class="hljs-built_in">number</span>[], nums2: <span class="hljs-built_in">number</span>[]): <span class="hljs-built_in">number</span> {
+let nums3: <span class="hljs-built_in">number</span>[] = []
+let ans: <span class="hljs-built_in">number</span>
+<span class="hljs-keyword">while</span>((nums1.<span class="hljs-built_in">length</span> &gt; <span class="hljs-number">0</span>) &amp;&amp; (nums2.<span class="hljs-built_in">length</span> &gt; <span class="hljs-number">0</span>)){
+    <span class="hljs-keyword">if</span>(nums1[<span class="hljs-number">0</span>] &lt; nums2[<span class="hljs-number">0</span>]){
+        nums3.push(nums1.shift())
+    } <span class="hljs-keyword">else</span> {
+        nums3.push(nums2.shift())
+    }
+}
+<span class="hljs-keyword">while</span>(nums1.<span class="hljs-built_in">length</span> &gt; <span class="hljs-number">0</span>){
+        nums3.push(nums1.shift())
+    } 
+<span class="hljs-keyword">while</span> (nums2.<span class="hljs-built_in">length</span> &gt; <span class="hljs-number">0</span>) {
+    nums3.push(nums2.shift())
+}
+<span class="hljs-keyword">if</span> (nums3.<span class="hljs-built_in">length</span>%<span class="hljs-number">2</span> == <span class="hljs-number">0</span>){
+    ans = (((nums3[(nums3.<span class="hljs-built_in">length</span>/<span class="hljs-number">2</span>) - <span class="hljs-number">1</span>]) + (nums3[(nums3.<span class="hljs-built_in">length</span>/<span class="hljs-number">2</span>)]))/<span class="hljs-number">2</span>)
+} <span class="hljs-keyword">else</span> {
+    ans = nums3[(nums3.<span class="hljs-built_in">length</span>/<span class="hljs-number">2</span>) - <span class="hljs-number">.5</span>]
+}
+<span class="hljs-built_in">return</span> ans
+};
+</code></pre>
+<p>Let&#39;s go line-by-line and try to calculate the Big O complexity to see if it comes anywhere close to the required O(log(m+n)):</p>
+<p>The initial assignments have a constant time complexity of O(1), as they don&#39;t require any operations in and of themselves. </p>
+<p>The initial <code>while</code> loop </p>
+<p><code>while((nums1.length &gt; 0) &amp;&amp; (nums2.length &gt; 0))</code></p>
+<p>has a complexity of O(m+n), as the operation continues for the length of both of the arrays; that being said, extreme cases, such as a case where one of the arrays is entirely smaller than the values of the other array and the loop ends with only one array depleted. As such, the complexity would be the length of the depleted array, being O(m) or O(n).</p>
+<p>The shifts within the first while loop are enclosed within an if-else statement that will run with every loop; this if-else will therefore have a complexity equivalent to the while statement. The shift methods within the if-else statement will also have a complexity of O(m+n), since shift operations require the re-indexing of every subsequent index value (so shifting 1 out of the list 1,2,3 would require that 2 and 3 are individually moved back). 
+The second and third <code>while</code> statements similarly run for the length of their respective arrays&#39; remaining length, and the assignments for the return statement (as well as the return statement itself) are all O(1).</p>
+<p>The resulting complexity simplifies to O(m+n), which is much slower than the target of O(log (m+n)). Magical.</p>
+
 
 
 </div>
